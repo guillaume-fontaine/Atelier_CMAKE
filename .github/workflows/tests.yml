@@ -28,7 +28,11 @@ jobs:
           cd build
           cmake ..
           make
-          ./src/calculator add 10 5
+          if [[ `./src/calculator add 10 5` != "15.000000"]]
+          then
+            echo "Eror calcul"
+            return 1
+          fi
   Test_Sub:
     runs-on: ubuntu-latest
     needs: Compilation
@@ -42,7 +46,11 @@ jobs:
           cd build
           cmake ..
           make
-          ./src/calculator sub 10 5
+          if [[ `./src/calculator sub 10 5` != "5.000000"]]
+          then
+            echo "Eror calcul"
+            return 1
+          fi
   Test_Mul:
     runs-on: ubuntu-latest
     needs: Compilation
@@ -56,7 +64,11 @@ jobs:
           cd build
           cmake ..
           make
-          ./src/calculator mul 10 5
+          if [[ `./src/calculator mul 10 5` != "50.000000"]]
+          then
+            echo "Eror calcul"
+            return 1
+          fi
   Test_Div:
     runs-on: ubuntu-latest
     needs: Compilation
@@ -70,7 +82,11 @@ jobs:
           cd build
           cmake ..
           make
-          ./src/calculator div 10 5
+          if [[ `./src/calculator div 10 5` != "2.000000"]]
+          then
+            echo "Eror calcul"
+            return 1
+          fi
   Test_Square:
     runs-on: ubuntu-latest
     needs: Compilation
@@ -84,4 +100,8 @@ jobs:
           cd build
           cmake ..
           make
-          ./src/calculator square 5
+          if [[ `./src/calculator square 5` != "25.000000"]]
+          then
+            echo "Eror calcul"
+            return 1
+          fi
