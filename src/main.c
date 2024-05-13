@@ -10,9 +10,9 @@ int main(int argc, char *argv[])
 	char *op = argv[1];
 	char *a = argv[2];
 	double r = 0;
-	if (argc == 3 && strcmp(op, "sqrt") == 0)
+	if (argc == 3 && strcmp(op, "square") == 0)
 	{
-		r = _sqrt(atof(a));
+		r = _square(atof(a));
 		printf("%lf", r);
 		return 0;
 	}
@@ -37,11 +37,6 @@ int main(int argc, char *argv[])
 		else if (strcmp(op, "div") == 0)
 		{
 			r = _div(atof(a), atof(b));
-			printf("%lf", r);
-		}
-		else if (strcmp(op, "square") == 0)
-		{
-			r = _square(atof(a));
 			printf("%lf", r);
 		}
 		else
