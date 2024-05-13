@@ -20,7 +20,7 @@ double _div(double a, double b)
 	return a / b;
 }
 
-double _sqrt(double a)
+double _square(double a)
 {
 	return a * a;
 }

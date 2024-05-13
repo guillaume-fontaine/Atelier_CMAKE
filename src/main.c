@@ -39,9 +39,9 @@ int main(int argc, char *argv[])
 			r = _div(atof(a), atof(b));
 			printf("%lf", r);
 		}
-		else if (strcmp(op, "sqrt") == 0)
+		else if (strcmp(op, "square") == 0)
 		{
-			r = _sqrt(atof(a));
+			r = _square(atof(a));
 			printf("%lf", r);
 		}
 		else
