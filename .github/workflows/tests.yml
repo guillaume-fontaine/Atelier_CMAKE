@@ -30,7 +30,7 @@ jobs:
           make
           result=$(./src/calculator add 10 5)
           if [[ "$result" != "15.000000" ]]; then
-            echo "Eror calcul"
+            echo "Error calcul"
             return 1
           fi
   Test_Sub:
@@ -48,7 +48,7 @@ jobs:
           make
           result=$(./src/calculator sub 10 5)
           if [[ "$result" != "5.000000" ]]; then
-            echo "Eror calcul"
+            echo "Error calcul"
             return 1
           fi
   Test_Mul:
@@ -66,7 +66,7 @@ jobs:
           make
           result=$(./src/calculator mul 10 5)
           if [[ "$result" != "50.000000" ]]; then
-            echo "Eror calcul"
+            echo "Error calcul"
             return 1
           fi
   Test_Div:
@@ -84,7 +84,7 @@ jobs:
           make
           result=$(./src/calculator div 10 5)
           if [[ "$result" != "2.000000" ]]; then
-            echo "Eror calcul"
+            echo "Error calcul"
             return 1
           fi
   Test_Square:
@@ -102,6 +102,24 @@ jobs:
           make
           result=$(./src/calculator square 2)
           if [[ "$result" != "4.000000" ]]; then
-            echo "Eror calcul"
+            echo "Error calcul"
+            return 1
+          fi
+  Test_Error_Parameter:
+    runs-on: ubuntu-latest
+    needs: Compilation
+    steps:
+      - name: Test error
+        run: |
+          last_directory=$(basename ${{ runner.workspace }})
+          git clone https://github.com/${{ github.repository }}.git
+          cd ./$last_directory
+          mkdir build
+          cd build
+          cmake ..
+          make
+          result=$(./src/calculator no_command 5)
+          if [[ "$result" != "Erreur de parametres" ]]; then
+            echo "Error Invalid Test is bypass"
             return 1
           fi
